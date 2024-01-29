@@ -1,22 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
-import { motion } from 'framer-motion';
 import ExtLink from './ext-link';
 import Container from './container';
+import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 const navItems = {
   '/': {
     name: 'Home',
   },
-  '/projects': {
-    name: 'Projects',
-  },
-
   '/work-journal': {
     name: 'Work Journal',
+  },
+  '/projects': {
+    name: 'Projects',
   },
 };
 

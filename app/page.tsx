@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { Playfair_Display } from 'next/font/google';
 import Container from '@/components/container';
+import { Playfair_Display } from 'next/font/google';
 
 const playfair = Playfair_Display({ subsets: ['latin'] });
 
