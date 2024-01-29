@@ -1,30 +1,18 @@
-import Container from '@/components/container';
-import ListItem from '@/components/listItem';
-import { newFunction } from '../../lib/notion';
-import { Playfair_Display } from 'next/font/google';
-
-const playfair = Playfair_Display({ subsets: ['latin'] });
+import Heading from "@/components/Heading";
+import Container from "@/components/container";
+import List from "@/components/list";
+import { fetchData } from "../../lib/notion";
 
 export default async function page() {
-  const blockIdsWithDate = await newFunction();
+  const blockIdsWithDate = await fetchData();
 
   return (
     <Container>
       <title>Aman Wankar | Work Journal</title>
-      <h1
-        className={`${playfair.className} text-5xl 
-        font-bold mb-6`}
-      >
-        Work Journal
-      </h1>
-      {blockIdsWithDate.map((dateWithIdAndContentObj, index) => (
-        <ListItem
-          key={index}
-          id={dateWithIdAndContentObj!.id}
-          date={dateWithIdAndContentObj!.date}
-          data={dateWithIdAndContentObj!.data}
-        />
-      ))}
+      <Heading>Work Journal</Heading>
+      <div className="my-6">
+        <List dataArray={blockIdsWithDate} />
+      </div>
     </Container>
   );
 }

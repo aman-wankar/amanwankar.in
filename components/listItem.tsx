@@ -1,31 +1,34 @@
-import ExtLink from '@/components/ext-link';
-import { format } from 'date-fns';
+import { dataObj } from "@/lib/notion";
+import format from "date-fns/format";
+import ExtLink from "./ext-link";
 
-type listItemProps = {
-  id: string;
-  date: string;
-  data: { content: string; link: string | null }[];
+export type Props = {
+  data: {
+    id: string;
+    date: string;
+    data: dataObj[];
+  };
 };
 
-const ListItem = ({ id, date, data }: listItemProps) => {
-  const dateObject = Date.parse(date);
-  const day = format(dateObject, 'do');
-  const month = format(dateObject, 'MMMM');
-  const year = format(dateObject, 'yyyy');
+export function ListItem({ data }: Props) {
+  const dateObject = Date.parse(data?.date!);
+  const day = format(dateObject, "do");
+  const month = format(dateObject, "MMMM");
+  const year = format(dateObject, "yyyy");
 
   return (
-    <div className='mb-8' key={id}>
-      <h3 className='text-md font-semibold mb-2' key={id}>
+    <div className="mb-8">
+      <h3 className="text-md mb-2 font-semibold">
         Week of {month} {day}, {year}
       </h3>
-      <ul key={date} className='list-disc list-inside'>
-        {data.map((contentAndLinkObj, index) => (
+      <ul className="list-inside list-disc">
+        {data?.data.map((contentAndLinkObj, index) => (
           <li key={index}>
-            {contentAndLinkObj.content}{' '}
+            {contentAndLinkObj.content}{" "}
             {contentAndLinkObj.link && (
               <ExtLink
                 href={contentAndLinkObj.link}
-                className='text-blue-500 hover:underline'
+                className="text-blue-500 hover:underline"
               >
                 Link
               </ExtLink>
@@ -35,6 +38,4 @@ const ListItem = ({ id, date, data }: listItemProps) => {
       </ul>
     </div>
   );
-};
-
-export default ListItem;
+}

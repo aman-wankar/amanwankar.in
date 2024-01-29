@@ -1,49 +1,49 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import clsx from 'clsx';
-import ExtLink from './ext-link';
-import Container from './container';
-import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Container from "./container";
+import ExtLink from "./ext-link";
 
 const navItems = {
-  '/': {
-    name: 'Home',
+  "/": {
+    name: "Home",
   },
-  '/work-journal': {
-    name: 'Work Journal',
+  "/work-journal": {
+    name: "Work Journal",
   },
-  '/projects': {
-    name: 'Projects',
+  "/projects": {
+    name: "Projects",
   },
 };
 
 const Header = () => {
-  let pathname = usePathname() || '/';
+  let pathname = usePathname() || "/";
 
   return (
-    <header className='py-10'>
+    <header className="py-10">
       <Container>
-        <nav className='flex'>
+        <nav className="flex">
           {Object.entries(navItems).map(([path, { name }]) => {
             const isActive = path === pathname;
             return (
               <Link
                 key={path}
                 href={path}
-                className={clsx('transition-all hover:text-gray-950 mr-4', {
-                  'text-gray-400': !isActive,
+                className={clsx("mr-4 transition-all hover:text-gray-950", {
+                  "text-gray-400": !isActive,
                 })}
               >
-                <span className='relative py-1'>
+                <span className="relative py-1">
                   {name}
                   {path === pathname ? (
                     <motion.div
-                      className='absolute h-[2px] top-7 inset-0 bg-gray-500 z-[-1]'
-                      layoutId='sidebar'
+                      className="absolute inset-0 top-7 z-[-1] h-[2px] bg-gray-500"
+                      layoutId="sidebar"
                       transition={{
-                        type: 'spring',
+                        type: "spring",
                         stiffness: 350,
                         damping: 30,
                       }}
@@ -54,8 +54,8 @@ const Header = () => {
             );
           })}
           <ExtLink
-            className='transition-all text-gray-400 hover:text-gray-950'
-            href='https://read.cv/aman_wankar'
+            className="text-gray-400 transition-all hover:text-gray-950"
+            href="https://read.cv/aman_wankar"
           >
             Resume
           </ExtLink>
