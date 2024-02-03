@@ -1,7 +1,6 @@
 import Heading from "@/components/Heading";
+import { ImagesGrid } from "@/components/ImagesGrid";
 import Container from "@/components/container";
-import Image from "next/image";
-import Link from "next/link";
 import {
   evogym,
   gamehub,
@@ -12,13 +11,16 @@ import {
   vidly,
 } from "../../public/project images";
 
-const projectsObj = [
+const frontendProjects = [
   { name: metaversus, link: "https://gpt-beige.vercel.app" },
   { name: hoobank, link: "https://modern-bank-eight.vercel.app" },
   { name: gpt, link: "https://gpt-beige.vercel.app" },
   { name: evogym, link: "https://gym-sepia.vercel.app" },
-  { name: vidly, link: "https://vidly-frontend-three.vercel.app" },
+];
+
+const fullstackProjects = [
   { name: gamehub, link: "https://game-hub-beta-pearl.vercel.app" },
+  { name: vidly, link: "https://vidly-frontend-three.vercel.app" },
   { name: issuetracker, link: "https://issue-tracker-seven-wine.vercel.app" },
 ];
 
@@ -27,16 +29,17 @@ const Projects = () => {
     <Container>
       <title>Aman Wankar | Projects</title>
       <Heading>Projects</Heading>
-      <div className="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {projectsObj.map((obj, index) => (
-          <Link href={obj.link} key={index}>
-            <Image
-              className="rounded-lg object-cover"
-              src={obj.name}
-              alt="Evogym Image"
-            />
-          </Link>
-        ))}
+      <div className="my-6">
+        <h2 className="font-playfair mb-4 text-3xl font-bold">
+          Fullstack Projects
+        </h2>
+        <ImagesGrid ImageGridProps={fullstackProjects} />
+      </div>
+      <div className="my-6">
+        <h2 className="font-playfair mb-4 text-3xl font-bold">
+          Frontend Projects
+        </h2>
+        <ImagesGrid ImageGridProps={frontendProjects} />
       </div>
     </Container>
   );
