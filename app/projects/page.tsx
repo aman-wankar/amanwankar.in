@@ -12,7 +12,7 @@ import {
 } from "../../public/project images";
 
 const frontendProjects = [
-  { name: metaversus, link: "https://gpt-beige.vercel.app" },
+  { name: metaversus, link: "https://metaversus-wheat.vercel.app" },
   { name: hoobank, link: "https://modern-bank-eight.vercel.app" },
   { name: gpt, link: "https://gpt-beige.vercel.app" },
   { name: evogym, link: "https://gym-sepia.vercel.app" },

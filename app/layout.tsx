@@ -4,7 +4,7 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export const playfair = Playfair_Display({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
 });
